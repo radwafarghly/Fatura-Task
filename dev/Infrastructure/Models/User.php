@@ -2,13 +2,10 @@
 
 namespace Dev\Infrastructure\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
-use Carbon\Carbon;
-use Dev\Domain\Service\NationalitiyService;
-use Dev\Domain\Service\ReservationService;
+
 
 /**
  * Class User responsible for users table
@@ -58,8 +55,12 @@ class User extends Authenticatable implements JWTSubject
 
 
    
-  
-
-
+   /**
+     * The roles that belong to the user.
+     */
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id');
+    }
     
 }

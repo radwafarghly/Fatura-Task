@@ -31,6 +31,22 @@ Route::middleware('auth:api')->group(function() {
 
 		
 	});
+
+	/** permission section **/
+	Route::apiResource('permission', 'PermissionController')->only([
+		'index'
+	]);
+	/** End of permission section **/
+
+	/** role section **/
+	Route::get('role/all', 'RoleController@getAllRoles');
+
+	Route::apiResource('role', 'RoleController');
+	/** End of role section **/
+ 
+	/** user section **/
+	Route::apiResource('user', 'UserController');
+	/** End of user section **/
 });
 
 

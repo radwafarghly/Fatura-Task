@@ -8,20 +8,24 @@ use App\Http\Response\Abstracts\AbstractJsonResource;
 /**
  *
  */
-class UserResource extends AbstractJsonResource
+class PermissionResource extends AbstractJsonResource
 {
     /**
      *
      */
-       
+
+
+  
+    
     public function modelResponse() : array
     {
-        
+       
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'email' => $this->email,
-            'roles' => RoleResource::collection($this->roles),
+            'name_arabic' => $this->name_arabic,
+            'name_english' => $this->name_english,
+            'slug' => $this->slug,
+
         ];
     }
 }
